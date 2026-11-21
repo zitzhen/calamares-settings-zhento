@@ -1,6 +1,7 @@
-# Kubuntu's Calamares Settings
+# KzhenTo's Calamares Settings
 
-This directory houses the Calamares settings for Kubuntu.
+This directory houses the Calamares settings for KzhenTo, a distribution derived from Kubuntu.
+The underlying package names and low-level configuration identifiers are kept as Kubuntu's to preserve build compatibility.
 
 Unless otherwise stated, the contents of this directory are licensed as follows:
 
