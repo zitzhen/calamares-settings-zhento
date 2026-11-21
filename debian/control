@@ -35,8 +35,9 @@ Architecture: all
 Depends: calamares-settings-ubuntu-common (>= ${binary:Version}),
          ${misc:Depends},
          ${qml6:Depends}
-Conflicts: calamares-settings-ubuntu-flavor
-Provides: calamares-settings-ubuntu-flavor
+Replaces: calamares-settings-ubuntu
+Conflicts: calamares-settings-ubuntu, calamares-settings-ubuntu-flavor
+Provides: calamares-settings-ubuntu, calamares-settings-ubuntu-flavor
 Description: KzhenTo Calamares Settings and Branding
  This package contains the Calamares settings and branding for KzhenTo.
  As part of the branding the installer slideshow is contained within.
