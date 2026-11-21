@@ -1,0 +1,82 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+      - 'kzhento/*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g. v26.04.13); required'
+        required: true
+        type: string
+      draft:
+        description: 'Create as draft (enabled by default; review before publishing)'
+        required: false
+        type: boolean
+        default: true
+      prerelease:
+        description: 'Mark as prerelease'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Gate / build / smoke
+    uses: ./.github/workflows/build-and-test.yml
+    with:
+      artifact-name: release-debs
+
+  release:
+    name: Create release (draft by default)
+    needs: verify
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download built packages
+        uses: actions/download-artifact@v4
+        with:
+          name: release-debs
+          path: artifacts
+
+      - name: Prepare release notes and checksums
+        id: meta
+        run: |
+          set -euo pipefail
+          version="$(dpkg-parsechangelog -S Version)"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          awk '
+            /^calamares-settings-ubuntu / { found++; if (found == 2) exit }
+            found == 1 { print }
+          ' debian/changelog > release-notes.md
+          {
+            printf '\n---\n\n'
+            printf 'Source version: `%s`  \n' "$version"
+            printf 'Commit: `%s`  \n' "${{ github.sha }}"
+            printf 'Passed: static gate, Debian package build, lintian error check, install smoke test.\n'
+          } >> release-notes.md
+          (cd artifacts && sha256sum ./*.deb > SHA256SUMS)
+
+      - name: Create draft release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag || github.ref_name }}
+          name: KzhenTo Calamares Settings ${{ steps.meta.outputs.version }}
+          body_path: release-notes.md
+          draft: ${{ github.event_name != 'workflow_dispatch' || inputs.draft }}
+          prerelease: ${{ github.event_name == 'workflow_dispatch' && inputs.prerelease }}
+          files: |
+            artifacts/*.deb
+            artifacts/*.changes
+            artifacts/*.buildinfo
+            artifacts/SHA256SUMS

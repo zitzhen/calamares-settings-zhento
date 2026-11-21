@@ -1,0 +1,100 @@
+name: Build and test (reusable)
+
+# Shared pipeline used by both ci.yml and release.yml:
+#   static gate -> binary package build + lintian -> install smoke test
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: Artifact name for the built .deb packages
+        type: string
+        default: debian-packages
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    name: Static gate
+    runs-on: ubuntu-24.04
+    container: ubuntu:26.04
+    steps:
+      - name: Install git before checkout
+        run: apt-get update && apt-get install -y --no-install-recommends git ca-certificates
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-build-env
+        with:
+          mode: gate
+      - name: Run static gate
+        run: bash .github/scripts/ci-gate.sh
+
+  build:
+    name: Build Debian packages
+    needs: gate
+    runs-on: ubuntu-24.04
+    container: ubuntu:26.04
+    steps:
+      - name: Install git before checkout
+        run: apt-get update && apt-get install -y --no-install-recommends git ca-certificates
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-build-env
+        with:
+          mode: build
+      - name: Build binary packages
+        run: |
+          set -euxo pipefail
+          dpkg-buildpackage -us -uc -b -rfakeroot
+          mkdir -p artifacts
+          find .. -maxdepth 1 -type f \
+            \( -name '*.deb' -o -name '*.changes' -o -name '*.buildinfo' \) \
+            -exec cp -v {} artifacts/ \;
+      - name: Lintian (errors are fatal)
+        run: |
+          set -uo pipefail
+          lintian artifacts/*.deb > lintian.txt 2>&1 || true
+          cat lintian.txt
+          if grep -qE '^E:' lintian.txt; then
+            echo "lintian reported errors" >&2
+            exit 1
+          fi
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: artifacts/*
+          if-no-files-found: error
+          retention-days: 7
+      - name: Upload lintian report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}-lintian
+          path: lintian.txt
+          if-no-files-found: error
+          retention-days: 7
+
+  smoke:
+    name: Install smoke test
+    needs: build
+    runs-on: ubuntu-24.04
+    container: ubuntu:26.04
+    steps:
+      - name: Install git before checkout
+        run: apt-get update && apt-get install -y --no-install-recommends git ca-certificates
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-build-env
+        with:
+          mode: smoke
+      - name: Download built packages
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: packages
+      - name: Install common + KzhenTo flavor
+        run: |
+          set -euxo pipefail
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            ./packages/calamares-settings-ubuntu-common*.deb \
+            ./packages/calamares-settings-kubuntu*.deb
+      - name: Run smoke test
+        run: bash .github/scripts/smoke-test.sh

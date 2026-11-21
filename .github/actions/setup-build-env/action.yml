@@ -1,0 +1,39 @@
+name: Setup Ubuntu build environment
+description: Install gate/build/smoke dependencies inside an Ubuntu 26.04 container
+
+inputs:
+  mode:
+    description: "gate | build | smoke"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Enable source repositories and install common tooling
+      shell: bash
+      run: |
+        set -euxo pipefail
+        # apt-get build-dep needs deb-src entries; both deb822 and legacy formats.
+        if compgen -G '/etc/apt/sources.list.d/*.sources' > /dev/null; then
+          for source_file in /etc/apt/sources.list.d/*.sources; do
+            sed -i 's/^Types: deb$/Types: deb deb-src/' "$source_file"
+          done
+        fi
+        if [ -f /etc/apt/sources.list ]; then
+          awk '{ print } /^deb / { print "deb-src" substr($0, 4) }' \
+            /etc/apt/sources.list > /tmp/sources.list
+          mv /tmp/sources.list /etc/apt/sources.list
+        fi
+        apt-get update
+        DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+          ca-certificates git dpkg-dev fakeroot debhelper \
+          desktop-file-utils file gettext intltool \
+          python3 python3-yaml
+
+    - name: Install package build dependencies
+      if: inputs.mode == 'build'
+      shell: bash
+      run: |
+        set -euxo pipefail
+        apt-get build-dep -y .
+        DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends lintian
