@@ -20,7 +20,7 @@ EOL
 
 if kdialog --warningyesno "${msg}"; then
   # Tweak branding to make it clear that OEM installation mode is active
-  sudo cp /etc/calamares/branding/kubuntu/welcome-oem.png /etc/calamares/branding/kubuntu/welcome.png;
+  sudo cp /etc/calamares/branding/kzhento/welcome-oem.png /etc/calamares/branding/kzhento/welcome.png;
 
   # Don't remove Calamares from the installed system.
   sudo sed -i '/- calamares$/d' /etc/calamares/modules/packages.conf;

@@ -1,18 +1,18 @@
 ---
-componentName: kubuntu
+componentName: kzhento
 
 windowExpanding:    fullscreen
 
 strings:
-    productName:         Kubuntu
-    shortProductName:    Kubuntu
+    productName:         KzhenTo
+    shortProductName:    KzhenTo
     version:             26.04
     shortVersion:        questing
-    versionedName:       Kubuntu
-    shortVersionedName:  Kubuntu 26.04
-    bootloaderEntryName: Kubuntu
-    productUrl:          https://kubuntu.org/
-    supportUrl:          https://kubuntu.org/contact/
+    versionedName:       KzhenTo 26.04
+    shortVersionedName:  KzhenTo 26.04
+    bootloaderEntryName: KzhenTo
+    productUrl:          https://zitzhen.cn/
+    supportUrl:          https://github.com/zitzhen/kzhento/issues
 
 images:
     productLogo:         "logo.png"
