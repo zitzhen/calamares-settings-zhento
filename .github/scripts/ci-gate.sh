@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Static CI gate for calamares-settings-ubuntu (KzhenTo fork).
+# Static CI gate for calamares-settings-zhento (KzhenTo fork).
 # Requires: dpkg-dev, gettext, desktop-file-utils, file, python3 + python3-yaml.
 # Exits non-zero when any check fails; all checks always run to report everything.
 
@@ -55,9 +55,10 @@ grep -q '^Rules-Requires-Root: no$' debian/control \
     && ok "Rules-Requires-Root: no" \
     || bad "debian/control missing Rules-Requires-Root: no"
 
-# calamares-settings-ubuntu-common-data conflicts with common versions below
-# 1:25.04.16. The source version must stay above that threshold, otherwise the
-# two freshly built packages conflict with each other during installation.
+# calamares-settings-zhento-common-data conflicts with common versions below
+# 1:25.04.16 (the Provides alias for calamares-settings-ubuntu-common inherits
+# this). The source version must stay above that threshold, otherwise the two
+# freshly built packages conflict with each other during installation.
 if command -v dpkg >/dev/null 2>&1 && [[ -n "$VER" ]]; then
     if dpkg --compare-versions "$VER" ge '1:25.04.16'; then
         ok "version $VER is above the common-data conflict threshold"

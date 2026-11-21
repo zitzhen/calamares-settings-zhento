@@ -94,7 +94,7 @@ jobs:
           set -euxo pipefail
           apt-get update
           DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-            ./packages/calamares-settings-ubuntu-common*.deb \
-            ./packages/calamares-settings-kubuntu*.deb
+            ./packages/calamares-settings-zhento-common*.deb \
+            ./packages/calamares-settings-zhento_*.deb
       - name: Run smoke test
         run: bash .github/scripts/smoke-test.sh

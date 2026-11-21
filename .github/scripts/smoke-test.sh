@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Post-install smoke test. Run inside an Ubuntu 26.04 container AFTER installing
-# calamares-settings-ubuntu-common(-data) and calamares-settings-kubuntu .debs.
+# calamares-settings-zhento-common(-data) and calamares-settings-zhento .debs.
 # Requires: dpkg, desktop-file-utils, file, python3 + python3-yaml.
 
 set -uo pipefail
@@ -11,9 +11,9 @@ ok()      { printf '  OK   %s\n' "$*"; }
 bad()     { printf '  FAIL %s\n' "$*" >&2; FAILURES=$((FAILURES + 1)); }
 
 section "Installed packages"
-for pkg in calamares-settings-ubuntu-common \
-           calamares-settings-ubuntu-common-data \
-           calamares-settings-kubuntu; do
+for pkg in calamares-settings-zhento-common \
+           calamares-settings-zhento-common-data \
+           calamares-settings-zhento; do
     status=$(dpkg-query -W -f='${db:Status-Abbrev}' "$pkg" 2>/dev/null || true)
     [[ "$status" == ii* ]] && ok "$pkg installed" || bad "$pkg not installed correctly (status: '${status}')"
 done
@@ -154,7 +154,7 @@ else
 fi
 
 section "Package integrity"
-for pkg in calamares-settings-ubuntu-common calamares-settings-ubuntu-common-data calamares-settings-kubuntu; do
+for pkg in calamares-settings-zhento-common calamares-settings-zhento-common-data calamares-settings-zhento; do
     if changes=$(dpkg -V "$pkg" 2>&1) && [[ -z "$changes" ]]; then
         ok "$pkg file verification passed"
     else
