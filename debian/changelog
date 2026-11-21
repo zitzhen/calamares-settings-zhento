@@ -1,3 +1,10 @@
+calamares-settings-ubuntu (2:1.0.1) resolute; urgency=medium
+
+  * Fix packages name
+
+ -- Oliver Lin <oliver@liuxiaozhen.dev>  Sat, 21 Nov 2026 21:34:35 +0800
+
+
 calamares-settings-ubuntu (2:1.0.0) resolute; urgency=medium
 
   * Initial release
