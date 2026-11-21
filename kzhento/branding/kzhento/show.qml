@@ -49,18 +49,6 @@ Presentation
     }
     Slide {
         Image {
-            id: image4
-            anchors.centerIn: parent
-            anchors.verticalCenterOffset: - parent.y / 3.6
-            height: parent.masterHeight * 0.95
-            width: parent.masterWidth * 0.95
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-            source: "04-docs-and-support.png"
-        }
-    }
-    Slide {
-        Image {
             id: image5
             anchors.centerIn: parent
             anchors.verticalCenterOffset: - parent.y / 3.6

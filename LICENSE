@@ -2,10 +2,10 @@ calamares-settings-zhento (ZIT Studio derivative)
 Copyright (C) 2026 ZIT Studio
 
 This file contains a ZIT Studio derivative work notice. That notice,
-together with the "Excluded artwork" and "Trademark notice" sections
-below, is NOT part of the GNU General Public License text that follows.
-The GNU General Public License version 3 text at the end of this file is
-reproduced verbatim and unmodified.
+together with the "Excluded artwork", "Third-party and upstream artwork"
+and "Trademark notice" sections below, is NOT part of the GNU General
+Public License text that follows. The GNU General Public License version 3
+text at the end of this file is reproduced verbatim and unmodified.
 
 -----------------------------------------------------------------------------
 UPSTREAM / ORIGINAL WORK
@@ -14,10 +14,11 @@ UPSTREAM / ORIGINAL WORK
 Based on calamares-settings-ubuntu, originally from:
   https://git.lubuntu.me/Lubuntu/calamares-settings-ubuntu.git
 
-Original work Copyright (C) 2022-2026 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>
-Original work Copyright (C) 2022-2026 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
-Original work Copyright (C) 2022-2026 Ubuntu Unity Developers
-Original work Copyright (C) 2022-2026 the calamares-settings-ubuntu contributors
+Original work Copyright (C) 2014 Rohan Garg <shadeslayer@systems>
+Original work Copyright (C) 2017-2026 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>
+Original work Copyright (C) 2020 Ubuntu Studio Developers <ubuntu-studio-devel@lists.ubuntu.com>
+Original work Copyright (C) 2024-2026 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
+Original work Copyright (C) 2024-2026 Ubuntu Unity Developers
 
 Derivative work Copyright (C) 2026 ZIT Studio
 
@@ -44,28 +45,74 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 EXCLUDED ARTWORK (separate and independent work, merely aggregated)
 -----------------------------------------------------------------------------
 
-The following file is a separate and independent work authored by ZIT
-Studio. It is NOT part of, nor a derivative of, the "Program" as that
-term is used in the GNU General Public License reproduced below; it is
+The following artwork files are separate and independent works authored by
+ZIT Studio. They are NOT part of, nor a derivative of, the "Program" as that
+term is used in the GNU General Public License reproduced below; they are
 merely aggregated with, and distributed alongside, the Program. The
 copyleft ("viral") terms of the GNU General Public License therefore do
-not extend to it, and it is not offered under the GNU General Public
+not extend to them, and they are not offered under the GNU General Public
 License or under any other license contained in this project.
 
-    kzhento/branding/kzhento  (the KzhenTo Logo)
+    kzhento/branding/kzhento/logo.png
+    kzhento/branding/kzhento/icon.png
+    kzhento/branding/kzhento/welcome.png
+    kzhento/branding/kzhento/welcome-oem.png
+    kzhento/branding/kzhento/01-welcome-to-kzhento.png
+    kzhento/branding/kzhento/02-kzhento-lts.png
+    kzhento/branding/kzhento/07-secure-and-private.png
+    kzhento/branding/kzhento/08-kzhento-focus.png
     Copyright (C) 2026 ZIT Studio
     All rights reserved.
 
-This logo is a replaceable, non-essential branding theme resource: the
-Program is able to run normally in its complete and intended form
-without this file present. Because it is separable from the Program and
-is not required for the Program to function, it is distributed here as
-an independent aggregated work rather than as a component of the Program.
+These are replaceable, non-essential branding theme resources: the Program
+is able to run normally in its complete and intended form without them
+present. Because they are separable from the Program and are not required
+for the Program to function, they are distributed here as independent
+aggregated works rather than as components of the Program.
 
 Permission to use, copy, modify, merge, publish, distribute, sublicense
 and/or sell copies of this artwork is NOT granted by the GNU General
 Public License or by any other grant in this project. Any such permission
 must be obtained in writing from ZIT Studio.
+
+-----------------------------------------------------------------------------
+THIRD-PARTY AND UPSTREAM ARTWORK (not owned by ZIT Studio)
+-----------------------------------------------------------------------------
+
+The following slideshow images are NOT authored by ZIT Studio and are NOT
+covered by the "Excluded artwork" section above. They are retained from the
+upstream calamares-settings-ubuntu project and remain subject to the
+copyright and license terms of their respective owners. Any trademarks,
+logos or product names appearing in them remain the property of their
+respective owners.
+
+    kzhento/branding/kzhento/03-kde.png
+        Contains icons from the KDE Breeze icon theme. Breeze icons are
+        licensed by the KDE Community under "LGPL-3.0-only OR
+        LicenseRef-KDE-Accepted-LGPL" (described by KDE as the GNU Lesser
+        General Public License version 3 or later). See
+        https://develop.kde.org/frameworks/breeze-icons/ and
+        https://community.kde.org/Policies/Licensing_Policy .
+        Copyright (C) KDE Community and the Breeze icon contributors.
+
+    kzhento/branding/kzhento/05-third-party-apps.png
+        Contains icons and names of third-party applications (including
+        Firefox, Thunderbird, LibreOffice and Synaptic). These are included
+        for identification and descriptive reference only. All such marks
+        are the property of their respective owners; no endorsement is
+        implied and ZIT Studio claims no ownership of them.
+
+    kzhento/branding/kzhento/06-hardware.png
+        Retained from upstream. Copyright (C) the upstream
+        calamares-settings-ubuntu contributors; licensed under
+        GPL-3.0-or-later as part of the Program.
+
+    kzhento/branding/kzhento/09-open-source-software.png
+        Retained from upstream, including descriptive references to Kubuntu
+        and open-source software. Copyright (C) the upstream
+        calamares-settings-ubuntu contributors; licensed under
+        GPL-3.0-or-later as part of the Program. Kubuntu and related marks
+        remain the property of their respective owners.
 
 -----------------------------------------------------------------------------
 TRADEMARK NOTICE
@@ -78,11 +125,14 @@ Lubuntu project, the Ubuntu Unity project, or KDE. "Ubuntu", "Kubuntu",
 names are trademarks of their respective owners and may not be used to
 promote, endorse, or imply endorsement of this derivative.
 
-For this derivative, the upstream Kubuntu-branded and Ubuntu-branded
-names, artwork and trademarks have been removed or replaced with KzhenTo /
-ZIT Studio branding. Any third-party trademarks that may still appear in
-configuration data, slide text or other assets remain the property of
-their respective owners.
+The KzhenTo and ZIT Studio branding resources (see "Excluded artwork" above)
+replace the upstream Kubuntu and Ubuntu branding used by the Program. Some
+retained upstream slideshow images (see "Third-party and upstream artwork"
+above) still contain descriptive references to KDE, Kubuntu, Ubuntu or
+third-party applications. Such references identify upstream components or
+third-party software for descriptive purposes only; they do not indicate
+endorsement of this derivative, and all such trademarks remain the property
+of their respective owners.
 
 =============================================================================
 The unmodified GNU General Public License version 3 text follows.

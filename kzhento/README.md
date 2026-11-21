@@ -7,6 +7,7 @@ Unless otherwise stated, the contents of this directory are licensed as follows:
 
 Copyright (C) 2018 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>
 Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
+Derivative work Copyright (C) 2026 ZIT Studio
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

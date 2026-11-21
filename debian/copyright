@@ -2,10 +2,10 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 
 Files: *
 Copyright: 2014 Rohan Garg <shadeslayer@systems>
+           2017-2026 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>
            2020 Ubuntu Studio Developers <ubuntu-studio-devel@lists.ubuntu.com>
-           2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
-           2024 Ubuntu Unity Developers
-           2017-2024 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>
+           2024-2026 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
+           2024-2026 Ubuntu Unity Developers
 License: GPL-3+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -22,6 +22,28 @@ License: GPL-3+
  .
  On Debian systems, the complete text of the GNU General
  Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+Files: kzhento/branding/kzhento/logo.png
+       kzhento/branding/kzhento/icon.png
+       kzhento/branding/kzhento/welcome.png
+       kzhento/branding/kzhento/welcome-oem.png
+       kzhento/branding/kzhento/01-welcome-to-kzhento.png
+       kzhento/branding/kzhento/02-kzhento-lts.png
+       kzhento/branding/kzhento/07-secure-and-private.png
+       kzhento/branding/kzhento/08-kzhento-focus.png
+Copyright: 2026 ZIT Studio
+License: proprietary
+ Separate and independent branding artwork authored by ZIT Studio, merely
+ aggregated with the Program and not offered under the GPL. See the
+ "Excluded artwork" section of the top-level LICENSE file.
+
+Files: kzhento/branding/kzhento/03-kde.png
+Copyright: KDE Community and the Breeze icon contributors
+License: LGPL-3+
+ Icons from the KDE Breeze icon theme, licensed "LGPL-3.0-only OR
+ LicenseRef-KDE-Accepted-LGPL" (GNU LGPL version 3 or later). See
+ https://develop.kde.org/frameworks/breeze-icons/ and
+ https://community.kde.org/Policies/Licensing_Policy .
 
 Files: ubuntuunity/ubuntu-unity-installer.svg
 Copyright: 2014 Uri Herrera <uri_herrera@nitrux.in> and others
