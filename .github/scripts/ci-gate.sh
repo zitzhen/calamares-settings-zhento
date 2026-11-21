@@ -55,6 +55,17 @@ grep -q '^Rules-Requires-Root: no$' debian/control \
     && ok "Rules-Requires-Root: no" \
     || bad "debian/control missing Rules-Requires-Root: no"
 
+# calamares-settings-ubuntu-common-data conflicts with common versions below
+# 1:25.04.16. The source version must stay above that threshold, otherwise the
+# two freshly built packages conflict with each other during installation.
+if command -v dpkg >/dev/null 2>&1 && [[ -n "$VER" ]]; then
+    if dpkg --compare-versions "$VER" ge '1:25.04.16'; then
+        ok "version $VER is above the common-data conflict threshold"
+    else
+        bad "version $VER is below 1:25.04.16; common-data will conflict with common"
+    fi
+fi
+
 # ---------------------------------------------------------------- Source layout
 section "Source layout"
 REQUIRED_DIRS=(
