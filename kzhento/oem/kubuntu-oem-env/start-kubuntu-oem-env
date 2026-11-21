@@ -1,0 +1,9 @@
+#!/bin/bash
+# Starts the KzhenTo OEM Environment.
+export XDG_SESSION_CLASS="user"
+export XDG_SESSION_DESKTOP="KDE"
+export DESKTOP_SESSION="plasma"
+export QT_QPA_PLATFORMTHEME="kde"
+export BROWSER='sudo -H -u kubuntu firefox'
+
+/usr/bin/kwin_wayland --no-lockscreen --xwayland /usr/libexec/kubuntu-oem-env-shim

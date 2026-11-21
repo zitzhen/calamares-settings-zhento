@@ -1,0 +1,29 @@
+---
+componentName: kzhento
+
+windowExpanding:    fullscreen
+
+strings:
+    productName:         KzhenTo
+    shortProductName:    KzhenTo
+    version:             26.04
+    shortVersion:        questing
+    versionedName:       KzhenTo 26.04
+    shortVersionedName:  KzhenTo 26.04
+    bootloaderEntryName: KzhenTo
+    productUrl:          https://zitzhen.cn/
+    supportUrl:          https://github.com/zitzhen/kzhento/issues
+
+images:
+    productLogo:         "logo.png"
+    productIcon:         "icon.png"
+    productWelcome:      "welcome.png"
+
+slideshow:               "show.qml"
+
+slideshowAPI:            1
+
+style:
+   SidebarBackground:    "#6C7B93"
+   SidebarText:          "#FFFFFF"
+   SidebarTextCurrent:   "#0068C8"
