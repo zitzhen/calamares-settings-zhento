@@ -13,3 +13,15 @@ If you want to add a new package for your flavor, here's how to do it:
 
 That's about it. If you have any questions, feel free to email Simon Quigley
 at tsimonq2@ubuntu.com or consult the upstream documentation.
+
+## CI / release (KzhenTo fork)
+
+- Pull requests and pushes to `main`, `kzhento`, or `action/**` run
+  `.github/workflows/ci.yml`: static gate -> Debian package build (with lintian
+  error checks) -> install smoke test.
+- Pushing a `v*` / `kzhento/*` tag, or manually triggering the workflow in
+  Actions (a tag is required), runs `.github/workflows/release.yml`. Artifacts
+  include `.deb`, `.changes`, `.buildinfo`, and `SHA256SUMS`. Releases are
+  **created as drafts by default**; publish them only after review.
+- The gate and smoke scripts are `.github/scripts/ci-gate.sh` and
+  `.github/scripts/smoke-test.sh`; both can be reproduced locally on Ubuntu 26.04.
