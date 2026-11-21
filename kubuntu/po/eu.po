@@ -13,11 +13,11 @@ msgstr ""
 "X-Generator: Translate Toolkit 2.3.0\n"
 
 #: ../kubuntu-calamares.desktop.in.h:1
-msgid "Install Kubuntu 26.04"
+msgid "Install KzhenTo 26.04"
 msgstr ""
 
 #: ../kubuntu-calamares.desktop.in.h:2
-msgid "Install Kubuntu"
+msgid "Install KzhenTo"
 msgstr ""
 
 #: ../kubuntu-calamares.desktop.in.h:3

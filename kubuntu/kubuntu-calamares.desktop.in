@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-_Name=Install Kubuntu 26.04
-_GenericName=Install Kubuntu
+_Name=Install KzhenTo 26.04
+_GenericName=Install KzhenTo
 Exec=sudo /usr/bin/calamares-launch-normal
 _Comment=Calamares — System Installer
 Icon=system-software-install

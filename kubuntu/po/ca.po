@@ -15,12 +15,12 @@ msgstr ""
 "X-Generator: Weblate 3.1-dev\n"
 
 #: ../kubuntu-calamares.desktop.in.h:1
-msgid "Install Kubuntu 26.04"
-msgstr "Instal·lar Kubuntu 26.04"
+msgid "Install KzhenTo 26.04"
+msgstr "Instal·lar KzhenTo 26.04"
 
 #: ../kubuntu-calamares.desktop.in.h:2
-msgid "Install Kubuntu"
-msgstr "Instal·lar Kubuntu"
+msgid "Install KzhenTo"
+msgstr "Instal·lar KzhenTo"
 
 #: ../kubuntu-calamares.desktop.in.h:3
 msgid "Calamares — System Installer"
