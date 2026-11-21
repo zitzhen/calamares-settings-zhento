@@ -20,7 +20,7 @@ Presentation
             width: parent.masterWidth * 0.95
             fillMode: Image.PreserveAspectFit
             smooth: true
-            source: "01-welcome-to-kubuntu.png"
+            source: "01-welcome-to-kzhento.png"
         }
     }
     Slide {
@@ -32,7 +32,7 @@ Presentation
             width: parent.masterWidth * 0.95
             fillMode: Image.PreserveAspectFit
             smooth: true
-            source: "02-kubuntu-lts.png"
+            source: "02-kzhento-lts.png"
         }
     }
     Slide {
@@ -104,7 +104,7 @@ Presentation
             width: parent.masterWidth * 0.95
             fillMode: Image.PreserveAspectFit
             smooth: true
-            source: "08-kubuntu-focus.png"
+            source: "08-kzhento-focus.png"
         }
     }
     Slide {
