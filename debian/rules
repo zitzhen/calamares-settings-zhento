@@ -6,10 +6,10 @@ export GOPATH=/usr/share/gocode
 export GO111MODULE=off
 export GOCACHE=$(CURDIR)/.gocache
 export PKGSELECT = "common/modules/pkgselect"
-export USRDIR = "debian/calamares-settings-ubuntu-common/usr"
-export DATA_USRDIR = "debian/calamares-settings-ubuntu-common-data/usr"
-export MODULES_DIR = "debian/calamares-settings-ubuntu-common/usr/lib/$(DEB_HOST_MULTIARCH)/calamares/modules"
-export DATA_MODULES_DIR = "debian/calamares-settings-ubuntu-common-data/usr/lib/calamares/modules"
+export USRDIR = "debian/calamares-settings-zhento-common/usr"
+export DATA_USRDIR = "debian/calamares-settings-zhento-common-data/usr"
+export MODULES_DIR = "debian/calamares-settings-zhento-common/usr/lib/$(DEB_HOST_MULTIARCH)/calamares/modules"
+export DATA_MODULES_DIR = "debian/calamares-settings-zhento-common-data/usr/lib/calamares/modules"
 
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
@@ -35,14 +35,14 @@ override_dh_auto_clean:
 	rm -rf $(GOCACHE)
 
 override_dh_auto_install:
-	(cd $(PKGSELECT)/build && $(MAKE) DESTDIR=$(CURDIR)/debian/calamares-settings-ubuntu-common/ install)
+	(cd $(PKGSELECT)/build && $(MAKE) DESTDIR=$(CURDIR)/debian/calamares-settings-zhento-common/ install)
 
 override_dh_missing:
 	dh_missing
 	mkdir -pv $(MODULES_DIR) $(DATA_MODULES_DIR)
 	cp -vr common/modules/automirror $(DATA_MODULES_DIR)
-	mkdir -pv debian/calamares-settings-ubuntu-common-data/etc/calamares/modules
-	cp -vr common/modules/*.conf debian/calamares-settings-ubuntu-common-data/etc/calamares/modules
+	mkdir -pv debian/calamares-settings-zhento-common-data/etc/calamares/modules
+	cp -vr common/modules/*.conf debian/calamares-settings-zhento-common-data/etc/calamares/modules
 	chmod 644 $(DATA_MODULES_DIR)/automirror/automirror.conf
 	chmod 644 $(DATA_MODULES_DIR)/automirror/module.desc
 	chmod 644 $(MODULES_DIR)/pkgselect/libcalamares_viewmodule_pkgselect.so
